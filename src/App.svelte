@@ -31,14 +31,14 @@
 				console.log(text_elem.style)
 
 				if (textBound.height > textBound.width) {
-					while (textBound.height > window.innerHeight - 100) {
-						fontSize -= 1;
+					while (textBound.height > window.innerHeight - 300) {
+						fontSize *= 0.8;
 						text_elem.style.fontSize = `${fontSize}px`;
 				        textBound = text_elem.getBoundingClientRect();
 					}
 				} else {
-					while (textBound.width > window.innerWidth - 100) {
-						fontSize -= 1;
+					while (textBound.width > window.innerWidth - 300) {
+						fontSize *= 0.8;
 						text_elem.style.fontSize = `${fontSize}px`;
 				        textBound = text_elem.getBoundingClientRect();
 					}
