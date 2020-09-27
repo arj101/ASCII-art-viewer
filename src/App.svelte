@@ -28,16 +28,22 @@
 				let textBound = text_elem.getBoundingClientRect();
 
 				console.log(textBound)
-				console.log(text_elem.style)
+				console.log(text_elem.style);
+
+				while (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
+					fontSize *= 0.8;
+					text_elem.style.fontSize = `${fontSize}px`;
+							textBound = text_elem.getBoundingClientRect();
+				}
 
 				if (textBound.height > textBound.width) {
-					while (textBound.height > window.innerHeight - window.innerHeight * 0.01) {
+					while (textBound.height > window.innerHeight - window.innerHeight * 0.1) {
 						fontSize *= 0.8;
 						text_elem.style.fontSize = `${fontSize}px`;
 				        textBound = text_elem.getBoundingClientRect();
 					}
 				} else {
-					while (textBound.width > window.innerWidth - window.innerWidth * 0.01) {
+					while (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
 						fontSize *= 0.8;
 						text_elem.style.fontSize = `${fontSize}px`;
 				        textBound = text_elem.getBoundingClientRect();
