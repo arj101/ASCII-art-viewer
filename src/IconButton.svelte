@@ -1,7 +1,7 @@
 <script>
     export let src;
     export let alt;
-    
+
 
     let button;
 
@@ -24,7 +24,9 @@
         ripple.animate(rippleAnimation, 200);
 
         setTimeout(function(){
-            button.removeChild(ripple);
+            if (button) {
+              button.removeChild(ripple);
+            }
         }, 300);
 
     }
@@ -47,6 +49,7 @@
 		-webkit-user-select: none;
 	}
 	button {
+    z-index: 2;
         margin: none;
 		padding: none;
 		border: none;
@@ -71,7 +74,7 @@
 
 	}
 	button:focus {
-        background-color: #ddd; 
+        background-color: #ddd;
 	}
 	button:hover {
 		box-shadow: 0px 4px 3px #55555580;

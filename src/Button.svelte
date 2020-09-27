@@ -36,6 +36,7 @@
 		-webkit-user-select: none;
 	}
 	button {
+		z-index: 2;
 		user-select: none;
 		position: relative;
 		cursor: pointer;

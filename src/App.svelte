@@ -67,7 +67,7 @@
 
 </script>
 
-<div>
+<div class='wrapper'>
 	{#if !file_opened}
 		<Centre>
 			<Button on:click={openFile}>Open</Button>
@@ -81,9 +81,9 @@
 	{#if isFullscreen}
 		<div class='fullscreen'>
 			<IconButton src='./fullscreen_exit.svg' on:click={toggleFullscreen} alt=''/>
-		</div>	
+		</div>
 	{:else}
-	    <div class='fullscreen'>
+	   <div class='fullscreen'>
 			<IconButton src='./fullscreen.svg' on:click={toggleFullscreen} alt=''/>
 		</div>
 	{/if}
@@ -106,7 +106,7 @@
 		height: fit-content;
 		font-family: 'Fira Code';
 	}
-	div {
+	.wrapper {
 		background-color: #212121;
 		margin: none;
 		padding: none;
@@ -114,6 +114,7 @@
 		outline: none;
 		width: 100%;
 		height: 100%;
+		z-index: 0;
 	}
 	:global(body) {
 		background-color: #212121;
