@@ -8,7 +8,11 @@
 	let text_elem;
 	let isFullscreen = document.fullscreenElement ? true : false;
 
+	let lines;
+
 	let file_opened = false;
+	let fontSize = 10;
+
 
 	function openFile() {
 		const input = document.createElement('input');
@@ -20,28 +24,18 @@
 			let fr = new FileReader();
 			fr.onload = () => {
 				file_opened = true;
+
 				text = fr.result;
 
-				let fontSize = 10;
-
 			    setTimeout(() => {
+
+
 				let textBound = text_elem.getBoundingClientRect();
 
-				console.log(textBound)
-				console.log(text_elem.style);
-
 				if (textBound.height > textBound.width) {
-					while (textBound.height > window.innerHeight - window.innerHeight * 0.1) {
-						fontSize *= 0.7;
-						text_elem.style.fontSize = `${fontSize}px`;
-				    textBound = text_elem.getBoundingClientRect();
-					}
+					resizeHeight()
 				} else {
-					while (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
-						fontSize *= 0.7;
-						text_elem.style.fontSize = `${fontSize}px`;
-				        textBound = text_elem.getBoundingClientRect();
-					}
+					resizeWidth()
 				}
 			}, 300);
 			}
@@ -51,6 +45,26 @@
 		setTimeout(() => {
 			input.click();
 		}, 200);
+	}
+
+	function resizeHeight() {
+		let textBound= text_elem.getBoundingClientRect();
+		fontSize *= 0.7;
+		text_elem.style.fontSize = `${fontSize}px`;
+		textBound = text_elem.getBoundingClientRect();
+		if (textBound.height > window.innerHeight - window.innerHeight * 0.1) {
+			requestAnimationFrame(resizeHeight);
+		}
+	}
+
+	function resizeWidth() {
+		let textBound = text_elem.getBoundingClientRect();
+		fontSize *= 0.7;
+		text_elem.style.fontSize = `${fontSize}px`;
+		textBound = text_elem.getBoundingClientRect();
+		if (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
+			requestAnimationFrame(resizeWidth)
+		}
 	}
 
 	function toggleFullscreen() {
@@ -74,7 +88,7 @@
 		</Centre>
 	{:else}
 		<Centre>
-			<pre bind:this={text_elem}><code>{text}</code></pre>
+			<code><pre id='lines' bind:this={text_elem}>{text}</pre></code>
 		</Centre>
 	{/if}
 
@@ -134,5 +148,11 @@
 		outline: none;
 		width: fit-content;
 		height: fit-content;
+	}
+	#lines {
+		display: flex;
+		align-items: start;
+		justify-content: start;
+		flex-direction: column;
 	}
 </style>
