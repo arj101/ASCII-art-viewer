@@ -19,5 +19,6 @@
     }
     slot {
       z-index: 2;
+      overflow: auto;
     }
 </style>

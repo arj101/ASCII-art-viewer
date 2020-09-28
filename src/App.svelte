@@ -32,18 +32,18 @@
 
 				if (textBound.height > textBound.width) {
 					while (textBound.height > window.innerHeight - window.innerHeight * 0.1) {
-						fontSize *= 0.8;
+						fontSize *= 0.7;
 						text_elem.style.fontSize = `${fontSize}px`;
 				    textBound = text_elem.getBoundingClientRect();
 					}
 				} else {
 					while (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
-						fontSize *= 0.8;
+						fontSize *= 0.7;
 						text_elem.style.fontSize = `${fontSize}px`;
 				        textBound = text_elem.getBoundingClientRect();
 					}
 				}
-			}, 500);
+			}, 300);
 			}
 
 			fr.readAsText(file)
@@ -83,13 +83,14 @@
 			<IconButton src='./fullscreen_exit.svg' on:click={toggleFullscreen} alt=''/>
 		</div>
 	{:else}
-	   <div class='fullscreen'>
+	    <div class='fullscreen'>
 			<IconButton src='./fullscreen.svg' on:click={toggleFullscreen} alt=''/>
 		</div>
 	{/if}
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 	:global(.ripple) {
 		position: absolute;
 		width: 0px;
@@ -101,10 +102,11 @@
 	}
 	pre {
 		font-size: 10px;
-		color: white;
+		color: rgb(245, 245, 245);
 		width: fit-content;
 		height: fit-content;
-		font-family: 'Fira Code';
+	    font-family: 'Ubuntu Mono', monospace;
+		overflow: visible;
 	}
 	.wrapper {
 		background-color: #212121;
