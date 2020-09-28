@@ -22,7 +22,7 @@
 			let file = input.files[0];
 
 			let fr = new FileReader();
-			fr.onload = () => {
+			fr.onload = async () => {
 				file_opened = true;
 
 				text = fr.result;
@@ -52,7 +52,7 @@
 		fontSize *= 0.7;
 		text_elem.style.fontSize = `${fontSize}px`;
 		textBound = text_elem.getBoundingClientRect();
-		if (textBound.height > window.innerHeight - window.innerHeight * 0.1) {
+		if (textBound.height > window.innerHeight - window.innerHeight * 0.02) {
 			requestAnimationFrame(resizeHeight);
 		}
 	}
@@ -62,7 +62,7 @@
 		fontSize *= 0.7;
 		text_elem.style.fontSize = `${fontSize}px`;
 		textBound = text_elem.getBoundingClientRect();
-		if (textBound.width > window.innerWidth - window.innerWidth * 0.1) {
+		if (textBound.width > window.innerWidth - window.innerWidth * 0.02) {
 			requestAnimationFrame(resizeWidth)
 		}
 	}
